@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    container_name: analisis_data
+    environment:
+      - DATA_NILAI=85,90,78,92,88
+    volumes:
+      - ./output:/app/output
+    depends_on:
+      - db
+    command: python app.py
+
+  db:
+    image: postgres:13
+    container_name: db_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:

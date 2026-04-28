@@ -8,15 +8,15 @@ Aplikasi ini menggunakan Docker dengan base image (python:3.9-slim) karena image
 >
 >  Sistem dijalankan menggunakan docker compose dengan dua container, yaitu container aplikasi (app) dan database (postgreSQL). Container app bertugas menjalankan script python untuk memproses data, sedangkan container database disiapkan sebagai layanan pendukung. Kedua container berjalan dalam satu network yang sama (virtual docker) sehingga dapat saling berkomunikasi.
 >
-> Alur komunikasi:
+>> Alur komunikasi:
 
-1. docker compose menjalankan kedua container secara bersamaan.
+>> 1. docker compose menjalankan kedua container secara bersamaan.
 
-2. container aplikasi (app) menerima input dari environment variable.
+>> 2. container aplikasi (app) menerima input dari environment variable.
    
-3. data diproses di dalam container python.
+>> 3. data diproses di dalam container python.
    
-4. hasil disimpan ke folder /app/output yang terhubung ke folder lokal (output/).
+>> 4. hasil disimpan ke folder /app/output yang terhubung ke folder lokal (output/).
 
 > Cara Menjalankan Aplikasi (How to Run):
 >> 1. docker-compose up --build: digunakan untuk menjalankan semua service yang ada dalam file docker-compose.yaml. (--build) digunakan untuk memastikan image docker dibangun terlebih dahulu sebelum container dijalankan.

@@ -26,3 +26,25 @@ Aplikasi ini menggunakan Docker dengan base image (python:3.9-slim) karena image
 >> 3. output tampil: hasil analisis akan ditampilkan di terminal dan disimpan dalam file output/hasil.csv
 >> 
 >> 4. docker-compose down: perintah ini digunakan jika ingin menghentikan dan menghapus container yang sedang berjalan.
+
+> Deskripsi Penjelasan UAS Devops
+>> Pada UAS dilakukan otomatisasi penyediaan server dan instalasi software menggunakan Terraform dan Ansible. Terraform digunakan untuk membuat container ubuntu sebagai simulasi server dan Ansible digunakan untuk install python, pip, dan library pandas secara otomatis. 
+
+> Menjalankan Terraform 
+>> Masuk ke direktori project berisi file main.tf dan menjalankan perintah berikut:
+>> 1. terraform init: digunakan untuk mengunduh provider yang dibutuhkan Terraform.
+>> 2. terraform apply: digunakan untuk membuat container ubuntu sebagai server analitik.
+
+> Menjalankan Ansible
+>> Apabila server berhasil dibuat oleh Terraform, selanjutnya menjalankan perintah berikut:
+>> ansible-playbook -i inventory.ini playbook.yml
+>> Perintah tersebut akan menjalankan playbook Ansible untuk:
+>> 1. install python3 dan pip menggunakan mode raw
+>> 2. menyalin file requirements.txt ke server
+>> 3. install library pandas secara otomatis
+
+Hasil Play Recap 
+### screenshot hasil 
+![PLAY RECAP](images/uas-play-recap-shafana.png)
+
+Hasil eksekusi menunjukkan bahwa seluruh proses instalasi python, pip, dan pandas berhasil dijalankan menggunakan Ansible dengan status failed=0.
